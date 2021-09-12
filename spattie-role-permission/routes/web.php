@@ -18,9 +18,18 @@ use App\Http\Controllers\Auth;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('role:user');
-Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard')->middleware('role:admin');
-Route::get('/login', [Auth\LoginController::class, 'index'])->name('login')->middleware('guest');
-Route::post('/login', [Auth\LoginController::class, 'authenticate'])->name('login');
 Route::post('/logout', [Auth\LoginController::class, 'logout'])->name('logout');
+
+Route::group(['middleware' => 'guest'], function () {
+    Route::get('/login', [Auth\LoginController::class, 'index'])->name('login')->middleware('guest');
+    Route::post('/login', [Auth\LoginController::class, 'authenticate'])->name('login');
+});
+
+Route::group(['middleware' => ['auth', 'role:user']], function () {
+    Route::get('/home', [HomeController::class, 'index']);
+});
+
+Route::group(['middleware' => ['auth', 'role:admin']], function () {
+    Route::get('/dashboard', [HomeController::class, 'index']);
+});
+
