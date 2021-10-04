@@ -1,0 +1,2 @@
+<button onclick="edit({{$model->id}})" class="btn btn-sm btn-warning"><i class="bi bi-pencil-square"></i></button>
+<button onclick="remove({{$model->id}})" class="btn btn-sm btn-danger"><i class="bi bi-folder-x"></i></button>

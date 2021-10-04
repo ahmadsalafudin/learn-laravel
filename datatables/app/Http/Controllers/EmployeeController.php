@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\DataTables\EmployeeDataTable;
 use App\Models\Employee;
-use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
@@ -15,7 +14,7 @@ class EmployeeController extends Controller
 
     public function index2()
     {
-        $data['data'] = DataTables::of(Employee::query())->make(true);
-        return view('employee', $data);
+        $data['data'] = Employee::all();
+        return view('employee2', $data);
     }
 }

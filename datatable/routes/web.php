@@ -14,4 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [EmployeeController::class, 'index2'])->name('employee');
+Route::get('/', [EmployeeController::class, 'index']);
+Route::get('/data', [EmployeeController::class, 'data']);
