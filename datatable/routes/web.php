@@ -16,3 +16,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [EmployeeController::class, 'index']);
 Route::get('/data', [EmployeeController::class, 'data']);
+Route::get('/detail', [EmployeeController::class, 'detail']);
+Route::get('/detail-data', [EmployeeController::class, 'detailData']);

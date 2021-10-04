@@ -16,6 +16,7 @@
                     <tr>
                         <th>Nik</th>
                         <th>Full Name</th>
+                        <th>Email</th>
                         <th>Date Of Birth</th>
                         <th>Gender</th>
                         <th>Status</th>
@@ -37,11 +38,12 @@
                     serverSide: true,
                     ajax: '/data',
                     columns: [
-                        { data: 'id', name: 'id' },
-                        { data: 'full_name', name: 'full_name' },
-                        { data: 'pob', name: 'pob' },
-                        { data: 'gender', name: 'gender' },
-                        { data: 'status', name: 'status' },
+                        { data: 'nik', name: 'employees.nik' },
+                        { data: 'email', name: 'users.email' },
+                        { data: 'full_name', name: 'employees.full_name' },
+                        { data: 'pob', name: 'employees.pob' },
+                        { data: 'gender', name: 'employees.gender' },
+                        { data: 'status', name: 'employees.status' },
                         { data: 'action', name: 'action' },
                     ]
                 });

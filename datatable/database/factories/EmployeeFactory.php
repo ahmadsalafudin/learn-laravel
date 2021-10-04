@@ -24,12 +24,13 @@ class EmployeeFactory extends Factory
         $gender = $this->faker->randomElement(['male', 'female']);
         $status = $this->faker->randomElement(['single', 'married']);
         return [
-            'nik' => $this->faker->randomDigit(),
+            'nik' => $this->faker->randomNumber($nbDigits = NULL, $strict = false),
             'full_name' => $this->faker->name($gender),
             'dob' => $this->faker->dateTimeBetween('1990-01-01', '2012-12-31')->format('Y-m-d'),
             'pob' => $this->faker->city(),
             'gender' => $gender,
             'status' => $status,
+            'user_id' => rand(1, 100)
         ];
     }
 }
