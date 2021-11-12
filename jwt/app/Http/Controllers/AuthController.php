@@ -27,10 +27,10 @@ class AuthController extends Controller
 
         $token_validity = 24 * 60;
         $this->guard()->factory()->setTTL($token_validity);
-        if (!$token_validity == $this->guard()->attempt($validator->validated())) {
+        if (!$token = $this->guard()->attempt($validator->validated())) {
             return response()->json(['error' => 'Unauthorized', 401]);
         }
-        return $this->responsWithToken($token_validity);
+        return $this->responseWithToken($token);
     }
 
     public function register(Request $request)
@@ -48,7 +48,7 @@ class AuthController extends Controller
             $validator->validated(),
             ['password' => bcrypt($request->passsword)]
         ]);
-        return response()->json(['message' => 'User crated succesfully', 'user' => $user]);
+        return response()->json(['message' => 'User created succesfully', 'user' => $user]);
     }
 
     public function logout(Request $request)
